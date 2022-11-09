@@ -27,9 +27,13 @@ class Country
     #[ORM\OneToMany(mappedBy: 'country', targetEntity: State::class)]
     private Collection $states;
 
+    #[ORM\OneToMany(mappedBy: 'country', targetEntity: User::class)]
+    private Collection $users;
+
     public function __construct()
     {
         $this->states = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -97,6 +101,36 @@ class Country
             // set the owning side to null (unless already changed)
             if ($state->getCountry() === $this) {
                 $state->setCountry(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setCountry($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getCountry() === $this) {
+                $user->setCountry(null);
             }
         }
 
