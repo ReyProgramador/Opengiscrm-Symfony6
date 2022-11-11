@@ -30,7 +30,7 @@ The following steps are meant to be used on a development server.
 - Clone Project
 
 ```bash
-$ git clone https://github.com/jonathanc/opengiscrm-codeigniter4.git
+$ git clone https://github.com/jonathanc/opengiscrm-symfony6.git
 ``` 
 - Setup vendor libraries 
 
@@ -45,7 +45,7 @@ $ php spark serve
 - Create Database and Run migrations
 
 ```bash
-$ php spark db:create 
+$ php bin/console doctrine:database:create
 ```
 
 ```bash
