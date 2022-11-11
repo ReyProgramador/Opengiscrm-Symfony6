@@ -40,7 +40,7 @@ $ composer install
 - Run server 
 
 ```bash
-$ php spark serve
+$ symfony server:start
 ```
 - Create Database and Run migrations
 
@@ -49,7 +49,7 @@ $ php bin/console doctrine:database:create
 ```
 
 ```bash
-$ php spark migrate -all
+$ php bin/console make:migration 
 ```
 
 - Run seeds
