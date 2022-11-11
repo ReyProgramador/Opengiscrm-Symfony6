@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LeadRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LeadRepository::class)]
@@ -43,6 +45,14 @@ class Lead
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $postal_code = null;
+
+    #[ORM\ManyToMany(targetEntity: UserLead::class, mappedBy: 'leadd')]
+    private Collection $userLeads;
+
+    public function __construct()
+    {
+        $this->userLeads = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -165,6 +175,33 @@ class Lead
     public function setPostalCode(?string $postal_code): self
     {
         $this->postal_code = $postal_code;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserLead>
+     */
+    public function getUserLeads(): Collection
+    {
+        return $this->userLeads;
+    }
+
+    public function addUserLead(UserLead $userLead): self
+    {
+        if (!$this->userLeads->contains($userLead)) {
+            $this->userLeads->add($userLead);
+            $userLead->addLeadd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserLead(UserLead $userLead): self
+    {
+        if ($this->userLeads->removeElement($userLead)) {
+            $userLead->removeLeadd($this);
+        }
 
         return $this;
     }

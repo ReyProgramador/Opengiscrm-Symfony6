@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -41,6 +43,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?State $state = null;
+
+    #[ORM\ManyToMany(targetEntity: UserLead::class, mappedBy: 'user')]
+    private Collection $userLeads;
+
+    public function __construct()
+    {
+        $this->userLeads = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -168,6 +178,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setState(?State $state): self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserLead>
+     */
+    public function getUserLeads(): Collection
+    {
+        return $this->userLeads;
+    }
+
+    public function addUserLead(UserLead $userLead): self
+    {
+        if (!$this->userLeads->contains($userLead)) {
+            $this->userLeads->add($userLead);
+            $userLead->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserLead(UserLead $userLead): self
+    {
+        if ($this->userLeads->removeElement($userLead)) {
+            $userLead->removeUser($this);
+        }
 
         return $this;
     }
