@@ -49,13 +49,17 @@ $ php bin/console doctrine:database:create
 ```
 
 ```bash
-$ php bin/console make:migration 
+$ php bin/console make:migration  
 ```
 
-- Run seeds
+```bash
+$ php bin/console doctrine:migrations:migrate  
+```
+
+- Run fixtures
 
 ```bash
-$ php spark db:seed LoadSeeder
+$ php bin/console doctrine:fixtures:load 
 ```
 
 ## Access Web-App:
@@ -64,7 +68,7 @@ _Admin: youremail@yourdomain.com
 
 ## Technologies 🛠️
 
-* [CodeIgniter v4.2.10](https://codeigniter.com/user_guide/index.html) 
+* [Symfony v4.2.10](https://codeigniter.com/user_guide/index.html) 
 
 ## Courses :movie_camera: 
 
