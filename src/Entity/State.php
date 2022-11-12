@@ -18,7 +18,7 @@ class State
     #[ORM\Column(length: 50)]
     private ?string $state = null;
 
-    #[ORM\ManyToOne(inversedBy: 'states')]
+    #[ORM\ManyToOne(inversedBy: 'states', cascade:["persist"])]
     private ?Country $country = null;
 
     #[ORM\OneToMany(mappedBy: 'state', targetEntity: User::class)]

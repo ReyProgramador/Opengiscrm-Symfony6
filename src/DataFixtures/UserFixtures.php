@@ -50,9 +50,9 @@ class UserFixtures extends Fixture
 
 		$user->setLastName('castro');
 
-		$user->setCountry($country);
+		$user->setCountry($country->getId());
 
-		$user->setState($state);
+		$user->setState($state->getId());
 
 		$manager->persist($user);
 

@@ -40,13 +40,15 @@ class StateFixtures extends Fixture
 
 			$country = new Country();
 
+			// print_r($country->id);
+
 			// print_r($value['country']);
 
 			// exit;		
 
 			$state->setState($value['state']);
 
-			$state->setCountry($country);			
+			$state->setCountry($country->getId());			
 
 			$manager->persist($state);
 
