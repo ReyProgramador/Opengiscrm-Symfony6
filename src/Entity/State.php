@@ -18,7 +18,7 @@ class State
     #[ORM\Column(length: 50)]
     private ?string $state = null;
 
-    #[ORM\ManyToOne(inversedBy: 'states')]
+    #[ORM\ManyToOne(inversedBy: 'states', cascade:["persist"])]
     private ?Country $country = null;
 
     #[ORM\OneToMany(mappedBy: 'state', targetEntity: User::class)]
@@ -32,6 +32,13 @@ class State
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getState(): ?string

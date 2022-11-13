@@ -15,10 +15,10 @@ class UserLead
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'userLeads')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'userLeads', cascade:["persist"])]
     private Collection $user;
 
-    #[ORM\ManyToMany(targetEntity: Lead::class, inversedBy: 'userLeads')]
+    #[ORM\ManyToMany(targetEntity: Lead::class, inversedBy: 'userLeads', cascade:["persist"])]
     private Collection $leadd;
 
     public function __construct()
