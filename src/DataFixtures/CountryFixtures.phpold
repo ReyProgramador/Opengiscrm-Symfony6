@@ -7,7 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 
 use App\Entity\Country;
 
-class CountryFixtures extends Fixture
+// class CountryFixtures extends Fixture
 {
 	public function load(ObjectManager $manager): void
 	{

@@ -13,7 +13,7 @@ use App\Entity\State;
 
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserFixtures extends Fixture
+// class UserFixtures extends Fixture
 {
 	private UserPasswordHasherInterface $hasher;
 
