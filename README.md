@@ -68,7 +68,7 @@ _Admin: youremail@yourdomain.com
 
 ## Technologies 🛠️
 
-* [Symfony v4.2.10](https://codeigniter.com/user_guide/index.html) 
+* [Symfony v6.1.7](https://symfony.com/doc/current/index.html) 
 
 ## Courses :movie_camera: 
 
