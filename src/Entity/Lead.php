@@ -25,7 +25,7 @@ class Lead
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $company = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $email = null;
 
     #[ORM\Column(length: 50, nullable: true)]

@@ -13,7 +13,7 @@ use App\Entity\UserLead;
 
 
 
-class UserLeadFixtures extends Fixture
+// class UserLeadFixtures extends Fixture
 {
 	public function load(ObjectManager $manager): void
 	{

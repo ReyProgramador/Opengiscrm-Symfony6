@@ -10,7 +10,7 @@ use App\Entity\State;
 
 use App\Entity\Country;
 
-class StateFixtures extends Fixture
+// class StateFixtures extends Fixture
 {
 	public function load(ObjectManager $manager): void
 	{
