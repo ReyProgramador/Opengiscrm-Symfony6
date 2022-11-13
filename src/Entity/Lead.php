@@ -22,10 +22,10 @@ class Lead
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $last_name = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $company = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $email = null;
 
     #[ORM\Column(length: 50, nullable: true)]
@@ -34,13 +34,13 @@ class Lead
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $street = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $id_state = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $city = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $id_country = null;
 
     #[ORM\Column(length: 50, nullable: true)]

@@ -15,9 +15,9 @@ use App\Entity\UserLead;
 
 class UserLeadFixtures extends Fixture
 {
-    public function load(ObjectManager $manager): void
-    {
-        $data = [
+	public function load(ObjectManager $manager): void
+	{
+		$data = [
 			[			
 				'id_user' => 1,
 				'id_lead' => 2				
@@ -44,9 +44,17 @@ class UserLeadFixtures extends Fixture
 
 			// $state->setState($value['state']);
 
-			$user_lead->addLeadd($lead->getId());	
+			$user_lead->addLeadd($lead);
 
-			$user_lead->addUser($user->getId());			
+			// $user_lead->addLeadd($lead->getUserLeads());
+
+			// $user_lead->addLeadd($lead->getId());			
+
+			$user_lead->addUser($user);
+
+			// $user_lead->addUser($user->getUserLeads());	
+
+			// $user_lead->addUser($user->getId());				
 
 			$manager->persist($user_lead);
 
@@ -54,5 +62,5 @@ class UserLeadFixtures extends Fixture
 		}
 
 
-    }
+	}
 }
