@@ -56,6 +56,62 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->save($user, true);
     }
 
+   //     public function findOneBySomeField($value): ?User
+   // {
+   //     return $this->createQueryBuilder('u')
+   //         ->andWhere('u.exampleField = :val')
+   //         ->setParameter('val', $value)
+   //         ->getQuery()
+   //         ->getOneOrNullResult()
+   //     ;
+   // }
+
+     public function findCountryUserById(int $id): array
+    {       
+
+           // establecer la conexion para custom querys 
+         $conn = $this->getEntityManager()->getConnection();       
+
+          // $sql = '
+          //   SELECT *
+          //   FROM countrys as c
+          //   LEFT JOIN users as u on u.country_id = c.id  
+          //   WHERE u.country_id = :id
+          //   ORDER BY c.country_id ASC
+          //   ';
+
+             $sql = '
+            SELECT *
+            FROM country as c
+            LEFT JOIN user as u on u.country_id = c.id  
+            -- WHERE u.country_id = :id
+            -- ORDER BY c.country_id ASC
+            ';
+
+             $resultSet = $conn->executeQuery($sql);
+
+        // $resultSet = $conn->executeQuery($sql, ['u.country_id' => $id]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
+    // public function findCountryUserById(int $id): array
+    // {
+    //     $entityManager = $this->getEntityManager();
+
+    //     $query = $entityManager->createQuery(
+    //         'SELECT c
+    //         FROM App\Entity\Country c
+    //         LEFT JOIN App\Entity\User u on u.country_id = c.id  
+    //         WHERE c.country_id = :id
+    //         ORDER BY c.country_id ASC'            
+    //     )->setParameter('country_id', $id);
+
+    //     // returns an array of Product objects
+    //     return $query->getResult();
+    // }
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */
